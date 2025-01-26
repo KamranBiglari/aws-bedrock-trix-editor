@@ -13,7 +13,7 @@ use Closure;
 class AwsBedrockTrixEditor extends RichEditor
 {
 
-    protected string $view = 'aws-bedrock-trix-editor::trix-editor';
+    protected string $view = 'aws-bedrock-trix-editor::aws-bedrock-trix-editor';
     protected array | Closure $toolbarButtons = [
         'attachFiles',
         'blockquote',
