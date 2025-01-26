@@ -33,7 +33,7 @@
         >
             <div
                 ax-load
-                ax-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('gpt-trix-editor', 'askerakbar/gpt-trix-editor') }}"
+                ax-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('aws-bedrock-trix-editor', 'kamranbiglari/aws-bedrock-trix-editor') }}"
                 x-data="trixEditor({
                     state: $wire.{{ $applyStateBindingModifiers("\$entangle('{$statePath}')", isOptimisticallyLive: false) }},
                 })"
@@ -398,27 +398,27 @@
                         @endif
 
 
-                        @if($hasToolbarButton('gptTools') && count($options))
+                        @if($hasToolbarButton('awsBedrockTools') && count($options))
                             <div class="flex items-center space-x-1 rtl:space-x-reverse">
                                 <x-filament::dropdown placement="bottom-start">
 
                                     <x-slot name="trigger">
                                         <div class="flex items-stretch space-x-1 rtl:space-x-reverse">
-                                            <x-gpt-trix-editor::toolbar-button class="gpt-tool-dropdown-button py-2 px-3" title="{{ __('gpt-trix-editor::gpt-trix-editor.button_title') }}" tabindex="-1" />
+                                            <x-aws-bedrock-trix-editor::toolbar-button class="aws-bedrock-tool-dropdown-button py-2 px-3" title="{{ __('aws-bedrock-trix-editor::aws-bedrock-trix-editor.button_title') }}" tabindex="-1" />
                                         </div>
                                     </x-slot>
 
                                     <x-filament::dropdown.list>
                                         @foreach($options as $key => $value)
                                             <span
-                                                x-data="gptTrixSpinner"
+                                                x-data="awsBedrockTrixSpinner"
                                                   x-on:update-selected-content.window="
                                           if (event.detail.statePath === '{{ $getId() }}') hideLoader()
                                           "
                                                   x-on:update-content.window="
                                           if(event.detail.statePath === '{{ $getId() }}') hideLoader()
                                           ">
-                                          <x-filament::dropdown.list.item x-on:click="showLoader()" wire:click.stop="dispatchFormEvent('gptTrixEditor::execute', '{{ $getStatePath() }}', '{{ $getId() }}','{{ $value['key'] }}',window.getSelection().toString())" title="{{$value['label']}}">
+                                          <x-filament::dropdown.list.item x-on:click="showLoader()" wire:click.stop="dispatchFormEvent('awsBedrockTrixEditor::execute', '{{ $getStatePath() }}', '{{ $getId() }}','{{ $value['key'] }}',window.getSelection().toString())" title="{{$value['label']}}">
                                              <svg x-show="loading" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="float:left" class="animate-spin filament-dropdown-list-item-icon mr-2 h-5 w-5 rtl:ml-2 rtl:mr-0 group-hover:text-white group-focus:text-white text-primary-500">
                                                 <path opacity="0.2" fill-rule="evenodd" clip-rule="evenodd" d="M12 19C15.866 19 19 15.866 19 12C19 8.13401 15.866 5 12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19ZM12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="currentColor"></path>
                                                 <path d="M2 12C2 6.47715 6.47715 2 12 2V5C8.13401 5 5 8.13401 5 12H2Z" fill="currentColor"></path>
@@ -558,7 +558,7 @@
                 </style>
                 <script>
                     document.addEventListener('alpine:init', () => {
-                        Alpine.data('gptTrixSpinner', () => ({
+                        Alpine.data('awsBedrockTrixSpinner', () => ({
                             loading: true,
                             init() {
                                 this.loading = false
