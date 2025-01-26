@@ -1,0 +1,49 @@
+{
+    "name": "kamranbiglari/aws-bedrock-trix-editor",
+    "description": "AWS Bedrock Trix Editor package extends the default Trix editor features in the Filament PHP framework.",
+    "keywords": [
+        "aws-bedrock",
+        "filament",
+        "aws-bedrock-trix-editor",
+        "filament-field-for-aws-bedrock",
+        "filament-3-grammar-check"
+    ],
+    "require": {
+        "php": "^8.0",
+        "filament/filament": "^3.2",
+        "spatie/laravel-package-tools": "^1.12",
+        "openai-php/laravel": "^0.8.1",
+        "illuminate/contracts": "^11.0",
+        "aws/aws-sdk-php": "^3.300"
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/kamranbiglari/aws-bedrock-trix-editor/",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "KamranBiglari\\AwsBedrockTrixEditor\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "KamranBiglari\\AwsBedrockTrixEditor\\AwsBedrockEditorServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Kamran Biglari",
+            "homepage": "https://github.com/kamranbiglari/",
+            "role": "Developer"
+        }
+    ],
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

@@ -21,3 +21,11 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
+
+composer.lock
+mix-manifest.json
+.idea
+.DS_Store
+.phpintel
+
+demo/
